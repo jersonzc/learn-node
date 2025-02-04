@@ -39,5 +39,11 @@ if (item) {
   fs.writeFileSync(filepath, JSON.stringify(items, null, 2));
 }
 
-// pnpm run start -i "Run morning" -c -d "today"
-console.log(items);
+for (let index = 0; index < items.length; index++) {
+  const element = items[index];
+  const checked = element.completed ? '[✓]' : '[ ]';
+  const dueDate = element.date ? new Date(element.date) : '';
+  const name = element.item;
+
+  console.log(`${index}. ${checked} ${name} [${dueDate}]`);
+}
