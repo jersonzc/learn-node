@@ -5,6 +5,15 @@ import commandLineArgs, { OptionDefinition } from 'command-line-args';
 const filename = 'data.json';
 const filepath = `${path.resolve('.')}/${filename}`;
 
+let content;
+try {
+  content = fs.readFileSync(filepath, 'utf-8');
+} catch (err) {
+  content = '[]';
+}
+
+const items = JSON.parse(content);
+
 const params: OptionDefinition[] = [
   {
     name: 'item',
@@ -24,8 +33,6 @@ const params: OptionDefinition[] = [
 ];
 const options = commandLineArgs(params);
 const { item = '', completed = false, date = '' } = options;
-
-const items = [];
 
 if (item) {
   items.push({ item, completed, date });
