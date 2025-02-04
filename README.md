@@ -13,7 +13,10 @@ pnpm run build
 pnpm run start
 ```
 
-### Test
+### Test & Lint
 ```sh
 pnpm run test
+```
+```sh
+pnpm run lint
 ```
