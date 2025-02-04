@@ -1,6 +1,42 @@
 import fs from 'fs';
 import path from 'path';
 import commandLineArgs, { OptionDefinition } from 'command-line-args';
+import commandLineUsage from 'command-line-usage';
+
+const sections = [
+  {
+    header: 'My app',
+    content: 'Yet another TODO list.',
+  },
+  {
+    header: 'Options',
+    optionList: [
+      {
+        name: 'item',
+        alias: 'i',
+        description: 'The task.',
+        type: String,
+      },
+      {
+        name: 'completed',
+        alias: 'c',
+        description: 'Task status.',
+        type: Boolean,
+        defaultOption: false,
+      },
+      {
+        name: 'date',
+        alias: 'd',
+        description: 'Date of completion.',
+        type: String,
+        defaultOption: '',
+      },
+    ],
+  },
+];
+const usage = commandLineUsage(sections);
+
+console.log(usage);
 
 const filename = 'data.json';
 const filepath = `${path.resolve('.')}/${filename}`;
