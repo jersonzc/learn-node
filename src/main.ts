@@ -41,7 +41,7 @@ console.log(usage);
 const filename = 'data.json';
 const filepath = `${path.resolve('.')}/${filename}`;
 
-let content;
+let content = '';
 try {
   content = fs.readFileSync(filepath, 'utf-8');
 } catch (err) {
@@ -81,5 +81,5 @@ for (let index = 0; index < items.length; index++) {
   const dueDate = element.date ? new Date(element.date) : '';
   const name = element.item;
 
-  console.log(`${index}. ${checked} ${name} [${dueDate}]`);
+  console.log(`${index + 1}. ${checked} ${name} [${dueDate}]`);
 }
